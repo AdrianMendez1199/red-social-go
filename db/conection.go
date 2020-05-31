@@ -26,3 +26,14 @@ func ConnectDB() *mongo.Client {
  log.Println("Conexión Exitosa")
  return client
 }
+
+func PingToDB() bool {
+	err := MongoCN.Ping(context.TODO(), nil)
+
+	if err != nil {
+		log.Fatal(err)
+		return false
+	}
+
+	return true
+}
